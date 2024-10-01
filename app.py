@@ -28,18 +28,3 @@ def translate_and_synthesize(input_text, input_lang):
         audio_translated = text_to_speech(translated_text, lang='en')  # الصوت باللغة الإنجليزية
         
     return audio_original, audio_translated  # إرجاع الصوت الأصلي والصوت المترجم
-
-# واجهة Gradio
-interface = gr.Interface(
-    fn=translate_and_synthesize,
-    inputs=[
-        gr.Textbox(label="Enter Text", lines=5),
-        gr.Radio(choices=["English", "Arabic"], label="Language")
-    ],
-    outputs=[
-        gr.Audio(label="Audio in Original Language"),
-        gr.Audio(label="Audio in Translated Language")  # الصوت المترجم
-    ]
-)
-
-interface.launch()
